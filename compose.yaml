@@ -1,0 +1,10 @@
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/work
+    stdin_open: true
+    tty: true
+    command: ["sleep", "infinity"]
