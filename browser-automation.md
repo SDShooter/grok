@@ -63,6 +63,3 @@ This project uses Selenium 4.49.0.
 - DesiredCapabilities is replaced by ChromeOptions, FirefoxOptions, and so on.
 - Do not pass a driver directory to the ChromeDriver constructor.
 - Close() closes one window; Quit() ends the session. Teardown needs Quit().
-
-Install Javascript based selenium-webdriver 4.51? - Requires Node.js >= 22.
-npm install selenium-webdriver
