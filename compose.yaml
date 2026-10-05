@@ -1,10 +1,11 @@
 services:
-  ubuntu:
+  grok:
     build:
       context: .
-      dockerfile: Dockerfile
     volumes:
       - ./:/work
+      - grokVolume:/root/.grok/
     stdin_open: true
     tty: true
-    command: ["sleep", "infinity"]
+volumes:
+  grokVolume:
