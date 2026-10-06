@@ -4,8 +4,22 @@ services:
       context: .
     volumes:
       - ./:/work
-      - grokVolume:/root/.grok/
+      - grokvolume:/root/.grok/
     stdin_open: true
     tty: true
+    environment:
+      - GITHUB_USER=relicx74
+      - DOCKER_USER=relicx74
+      - GITHUB_PAT_FILE=/run/secrets/github_pat
+      - DOCKER_PAT_FILE=/run/secrets/docker_pat
+      - NSOLID_SAAS=L@+/&5Yw.Pbh]-nFU&<q:^NlL<7u-k2xQUJ(S<&s1cf4b70f-4ca4-4655-a814-d33ef9577f12.prod.proxy.saas.nodesource.io:9001
+    secrets:
+      - github_pat
+      - docker_pat
 volumes:
-  grokVolume:
+  grokvolume:
+secrets:
+  github_pat:
+    file: ./.secrets/github_pat
+  docker_pat:
+    file: ./secrets/docker_pat
