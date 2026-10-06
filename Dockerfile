@@ -25,20 +25,19 @@ RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
 RUN rustup target add x86_64-unknown-linux-musl
 
-#INSTALL NSOLID (NPM/Node compat replacement and node)
-RUN apt-get install -y nsolid
-RUN nsolid -v
 # NodeSource setup_24.x provides the nodejs package (node and npm).
 RUN apt-get update \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 RUN node -v
 RUN npm -v
-RUN npm install selenium-webdriver
-#RUN npm install selenium-webdriver chromedriver geckodriver
+RUN npm install selenium-webdriver chromdriver gechodriver
 
-COPY ./test /work/test
-#RUN node /work/test/chrome.js
+
+COPY ./test/chrome.js /work/test/chrome.js
+COPY ./test/chrome-mocha.js /work/test/chrome-mocha.js
+
+RUN node /work/test/chrome.js
 
 ENTRYPOINT ["grok", "--yolo"]
 #ENTRYPOINT ["bash"]
