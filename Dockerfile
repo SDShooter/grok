@@ -14,8 +14,7 @@ RUN apt-get update \
     && ./configure \
     && make -s -j 4 \
     && cd .. \
-    && rm ./Python-3.13.16.tgz \
-    && rm -rf /var/lib/apt/lists/*
+    && rm ./Python-3.13.16.tgz
 
 #SET UP NODE REPO IN APT - HERE SO WE UPDATE FIRST
 # NodeSource setup_24.x provides the nodejs package (node and npm).
@@ -32,6 +31,7 @@ RUN curl -fsSL https://x.ai/cli/install.sh | bash
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
 RUN rustup target add x86_64-unknown-linux-musl wasm32-unknown-unknown 
 RUN cargo install wasm-bindgen-cli --version 0.2.129 --locked    
+
 # INSTALL Selenium with browserdrivers and other node packages..Is there a confirmation somewhere?  A disallow?
 RUN npm install selenium-webdriver chromedriver geckodriver
 
